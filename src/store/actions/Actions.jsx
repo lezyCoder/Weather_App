@@ -1,0 +1,47 @@
+import axios from "axios";
+const API_KEY =  import.meta.env.VITE_WEATHER_API
+
+import {
+  FETCH_CURRENT_WEATHER,
+  FETCH_FORECAST_WEATHER,
+  FETCH_WEATHER_ERROR,
+  FETCH_WEATHER_PENDING,
+  SET_CITY,
+} from "../constants/constants";
+
+export const fetchWeatherPending = () => {
+  return {
+    type: FETCH_WEATHER_PENDING,
+  };
+};
+
+export const fetchCurrentWeather = (data) => {
+  return {
+    type: FETCH_CURRENT_WEATHER,
+    payload: data,
+  };
+};
+
+export const fetchForecastWeather = (data) => {
+  return {
+    type: FETCH_FORECAST_WEATHER,
+    payload: data,
+  };
+};
+
+export const fetchWeatherError = (error) => {
+  return {
+    type: FETCH_WEATHER_ERROR,
+    payload: error,
+  };
+};
+
+export const setCity = (city) => {
+  return {
+    type: SET_CITY,
+  };
+};
+
+export const fetchWeather = (city) => {
+ const response = axios(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid={API_KEY}`)
+};
