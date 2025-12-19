@@ -1,5 +1,5 @@
 import axios from "axios";
-const API_KEY =  import.meta.env.VITE_WEATHER_API
+const API_KEY = import.meta.env.VITE_WEATHER_API;
 
 import {
   FETCH_CURRENT_WEATHER,
@@ -43,5 +43,11 @@ export const setCity = (city) => {
 };
 
 export const fetchWeather = (city) => {
- const response = axios(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid={API_KEY}`)
+  // this function was provided by the middleware
+  return async (dispatch) => {
+    const response = await axios(
+      `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid={API_KEY}`
+    );
+    console.log(response);
+  };
 };

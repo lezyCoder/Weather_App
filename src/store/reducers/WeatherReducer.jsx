@@ -2,12 +2,11 @@ import { useReducer } from "react";
 
 import {
   FETCH_CURRENT_WEATHER,
-  FETCH_ERROR,
-  FETCH_LOADING,
+  FETCH_WEATHER_ERROR,
   FETCH_FORECAST_WEATHER,
   SET_CITY,
-} from "./constants";
-import { FETCH_WEATHER_PENDING } from "../constants/constants";
+  FETCH_WEATHER_PENDING,
+} from "../constants/constants";
 
 const initialState = {
   city: "Delhi",
@@ -36,7 +35,7 @@ export const weatherReducer = (state = initialState, action) => {
         forecasteWeather: action.payload,
       };
     }
-    case FETCH_ERROR_WEATHER: {
+    case FETCH_WEATHER_ERROR: {
       return {
         ...state,
         error: action.payload,
