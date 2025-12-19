@@ -46,8 +46,12 @@ export const fetchWeather = (city) => {
   // this function was provided by the middleware
   return async (dispatch) => {
     const response = await axios(
-      `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid={API_KEY}`
+      `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}`
+    );
+    const forecastDetails = await axios(
+      `https://pro.openweathermap.org/data/2.5/forecast/?q=${city}&appid=${API_KEY}`
     );
     console.log(response);
+    console.log(forecastDetails);
   };
 };
