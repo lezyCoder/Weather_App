@@ -1,4 +1,19 @@
+import { useDispatch, useSelector } from "react-redux";
+import { fetchWeather, setCity } from "../store/actions/Actions";
 const Search = () => {
+  const dispatch = useDispatch();
+  // accessing the city only
+  const city = useSelector((state) => state.weatherDetails.city);
+  // handling the set city action
+  const handleInput = (e) => {
+    dispatch(setCity(e.target.value));
+  };
+
+  // handling the search
+  const handleSearch = () => {
+    dispatch(fetchWeather(city));
+  };
+
   return (
     <div className="join">
       <label className="input">
@@ -16,9 +31,17 @@ const Search = () => {
             <path d="m21 21-4.3-4.3"></path>
           </g>
         </svg>
-        <input type="search" required placeholder="Search" />
+        <input
+          type="search"
+          required
+          placeholder="Search"
+          value={city}
+          onChange={(e) => handleInput(e)}
+        />
       </label>
-      <button className="btn btn-neutral join-item">Join</button>
+      <button className="btn btn-neutral join-item" onClick={handleSearch}>
+        search
+      </button>
     </div>
   );
 };

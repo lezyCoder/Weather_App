@@ -8,6 +8,7 @@ import {
   FETCH_WEATHER_PENDING,
 } from "../constants/constants";
 
+
 const initialState = {
   city: "Delhi",
   loading: null,
