@@ -5,23 +5,30 @@ const ForecastWeather = () => {
     (state) => state.weatherDetails
   );
 
+  if (loading) return <p>Loading forecast...</p>;
   if (error) return <p>{error}</p>;
-  if (!forecasteWeather) return null;
-
-  console.log("forecast", forecasteWeather);
+  // console.log("forecast in UI", forecasteWeather);
+  if (!forecasteWeather?.length) return <p>No forecast data available </p>;
+  console.log("forecast in UI", forecasteWeather);
   return (
     <div>
-      <h2>Forecast Details </h2>
-      <div className="card-body">
-        <h2 className="card-title">{city}</h2>
-        <div className="weather-details flex flex-col items-end text-lg">
-          <p>Temperature - {temperature}&deg;C</p>
-          <p>Wind - {speed} mph</p>
-          <p>Humidity - {humidity} %</p>
-        </div>
-        <div className="card-actions justify-end">
-          {/* <button className="btn btn-primary">Buy Now</button> */}
-        </div>
+      <h2 className="text-xl font-bold mb-4">Forecast Details</h2>
+
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        {forecasteWeather.list.slice(0, 6).map((item, index) => (
+          <div key={index} className="card bg-base-100 shadow-md p-4">
+            <p className="font-semibold">
+              {new Date(item.dt * 1000).toLocaleString()}
+            </p>
+
+            <div className="weather-details text-lg">
+              <p>🌡 Temp: {item.main.temp}°C</p>
+              <p>💧 Humidity: {item.main.humidity}%</p>
+              <p>💨 Wind: {item.wind.speed} m/s</p>
+              <p>☁️ {item.weather[0].description}</p>
+            </div>
+          </div>
+        ))}
       </div>
     </div>
   );

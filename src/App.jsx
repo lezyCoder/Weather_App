@@ -13,9 +13,8 @@ function App() {
   useEffect(() => {
     dispatch(fetchWeather(city));
   }, []);
-
   return (
-    <div className="flex justify-center items-center gap-10 flex-col mt-10">
+    <div className="flex justify-center items-center gap-10 flex-col mt-10 ">
       <Search />
       <CurrentWeather />
       <ForecastWeather />

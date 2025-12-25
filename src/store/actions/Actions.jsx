@@ -53,10 +53,10 @@ export const fetchWeather = (city) => {
         `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}`
       );
       const forecastDetails = await axios(
-        `https://pro.openweathermap.org/data/2.5/forecast?q=${city}&appid=${API_KEY}`
+        `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${API_KEY}`
       );
       // console.log("Current", currentWeather);
-      // console.log("forecast", forecastDetails);
+      console.log("forecast", forecastDetails);
 
       // console.log("hello", currentWeather.data);
       dispatch(fetchCurrentWeather(currentWeather.data.main));
