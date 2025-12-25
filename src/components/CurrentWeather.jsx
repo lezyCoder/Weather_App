@@ -6,15 +6,19 @@ const CurrentWeather = () => {
     (state) => state.weatherDetails
   );
 
-  console.log(currentWeather);
-  const temp = currentWeather[0].main.temp;
-  const temperature = Math.floor(temp - 273.15);
+  if (loading) return <p className="p-10">Featching Report ....</p>;
+
+  if (!currentWeather || currentWeather.length === 0) {
+    return <p className="p-10">No weather data available</p>;
+  }
+
+  const tempKelvin = currentWeather[0].main.temp;
+  const temperature = Math.floor(tempKelvin - 273.15);
 
   const humidity = currentWeather[0].main.humidity;
 
   const { speed } = currentWeather[0].wind;
-
-  if (loading) return <p className="p-10">Featching Report ....</p>;
+  const windMph = (speed * 2.237).toFixed(1);
 
   return (
     <div>
@@ -30,7 +34,7 @@ const CurrentWeather = () => {
           <h2 className="card-title">{city}</h2>
           <div className="weather-details flex flex-col items-end text-lg">
             <p>Temperature - {temperature}&deg;C</p>
-            <p>Wind - {speed} mph</p>
+            <p>Wind - {windMph} mph</p>
             <p>Humidity - {humidity} %</p>
           </div>
           <div className="card-actions justify-end">
