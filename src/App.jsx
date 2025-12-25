@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 import Search from "./components/search.jsx";
 import CurrentWeather from "./components/CurrentWeather.jsx";
+import ForecastWeather from "./components/ForecastWeather.jsx";
 
 function App() {
   const city = useSelector((state) => state.weatherDetails.city);
@@ -17,6 +18,7 @@ function App() {
     <div className="flex justify-center items-center gap-10 flex-col mt-10">
       <Search />
       <CurrentWeather />
+      <ForecastWeather />
     </div>
   );
 }

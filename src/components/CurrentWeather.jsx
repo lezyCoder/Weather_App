@@ -2,18 +2,18 @@ import React from "react";
 import { useSelector } from "react-redux";
 
 const CurrentWeather = () => {
-  const { currentWeather, city, loading } = useSelector(
+  const { currentWeather, city, loading, error } = useSelector(
     (state) => state.weatherDetails
   );
 
   if (loading) return <p className="p-10">Featching Report ....</p>;
-
+  if (error) return <p>{error}</p>;
   if (!currentWeather || currentWeather.length === 0) {
     return <p className="p-10">No weather data available</p>;
   }
 
   const tempKelvin = currentWeather[0].main.temp;
-  const temperature = Math.floor(tempKelvin - 273.15);
+  const temperature = Math.floor(tempKelvin - 273.15).toFixed(1);
 
   const humidity = currentWeather[0].main.humidity;
 

@@ -8,8 +8,10 @@ const ForecastWeather = () => {
   if (error) return <p>{error}</p>;
   if (!forecasteWeather) return null;
 
+  console.log("forecast", forecasteWeather);
   return (
     <div>
+      <h2>Forecast Details </h2>
       <div className="card-body">
         <h2 className="card-title">{city}</h2>
         <div className="weather-details flex flex-col items-end text-lg">

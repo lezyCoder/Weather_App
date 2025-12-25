@@ -55,10 +55,11 @@ export const fetchWeather = (city) => {
       const forecastDetails = await axios(
         `https://pro.openweathermap.org/data/2.5/forecast?q=${city}&appid=${API_KEY}`
       );
-      // console.log(response);
-      // console.log(forecastDetails);
+      // console.log("Current", currentWeather);
+      // console.log("forecast", forecastDetails);
 
-      dispatch(fetchCurrentWeather(currentWeather.data));
+      // console.log("hello", currentWeather.data);
+      dispatch(fetchCurrentWeather(currentWeather.data.main));
       dispatch(fetchForecastWeather(forecastDetails.data.list));
     } catch (error) {
       dispatch(fetchWeatherError("Something went wrong"));
