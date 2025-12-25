@@ -11,10 +11,10 @@ import {
 
 const initialState = {
   city: "Delhi",
-  loading: null,
+  loading: false,
   error: null,
   currentWeather: null,
-  forecasteWeather: null,
+  forecastWeather: null,
 };
 
 export const weatherReducer = (state = initialState, action) => {
@@ -33,7 +33,7 @@ export const weatherReducer = (state = initialState, action) => {
       return {
         ...state,
         loading: false,
-        forecasteWeather: action.payload,
+        forecastWeather: action.payload,
       };
     }
     case FETCH_WEATHER_ERROR: {
